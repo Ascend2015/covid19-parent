@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.tju.xiaoyin.system.mapper.UserMapper">
+    <select id="findUserPage" resultType="cn.tju.xiaoyin.system.entity.User">
+        select u.id,
+               username,
+               u.nickname,
+               u.email,
+               u.avatar,
+               u.phone_number,
+               u.status,
+               u.create_time,
+               u.modified_time,
+               u.sex,
+               salt,
+               type,
+               password,
+               birth,
+               department_id,
+               td.name name
+        from tb_user u
+                 left join tb_department td on u.department_id = td.id
+            ${ew.customSqlSegment}
+    </select>
+</mapper>

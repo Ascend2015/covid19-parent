@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: covid19-web
+  datasource:
+    url: jdbc:mysql://localhost:3306/xinguan?useUnicode=true&characterEncoding=UTF8&serverTimezone=GMT%2B8&useSSL=false
+    password: 123456
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    username: root
+  jackson:
+    time-zone: GMT+8
+    date-format: yyyy-MM-dd HH:mm:ss
+server:
+  port: 8082
+
+mybatis-plus:
+  mapper-locations: classpath*:/mapper/*.xml
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      logic-delete-field: deleted #全局逻辑删除所用的字段名
+      logic-not-delete-value: 0
+      logic-delete-value: 1
+  type-aliases-package: cn.tju.xiaoyin.system.entity
+
+
